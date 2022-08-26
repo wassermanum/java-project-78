@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class NumberSchema extends BaseSchema {
+public class NumberSchema extends BaseSchema<Number> {
 
     public NumberSchema() {
 //        super();
@@ -11,23 +11,22 @@ public class NumberSchema extends BaseSchema {
     }
 
     public NumberSchema required() {
-        this.predicateList.add(o -> Objects.nonNull(o) && o instanceof Number);
+        this.predicateList.add(Objects::nonNull);
         return this;
     }
 
     public NumberSchema positive() {
         this.predicateList.add(o ->
-                Objects.nonNull(o) &&
-                o instanceof Number &&
-                ((Number) o).doubleValue() > 0
+                Objects.nonNull(o)&&
+                o.doubleValue() > 0
         );
         return this;
     }
 
     public NumberSchema range(Number min, Number max) {
         this.predicateList.add(o ->
-                        ((Number) o).doubleValue() > min.doubleValue() &&
-                        ((Number) o).doubleValue() < max.doubleValue()
+                        o.doubleValue() > min.doubleValue() &&
+                        o.doubleValue() < max.doubleValue()
                 );
         return this;
     }

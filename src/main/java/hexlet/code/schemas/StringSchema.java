@@ -3,7 +3,7 @@ package hexlet.code.schemas;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class StringSchema extends BaseSchema {
+public class StringSchema extends BaseSchema<String> {
 
     public StringSchema() {
         this.predicateList = new ArrayList<>();
@@ -12,14 +12,13 @@ public class StringSchema extends BaseSchema {
     public StringSchema required() {
         this.predicateList.add(o ->
                 Objects.nonNull(o) &&
-                o instanceof String &&
-                !o.toString().isEmpty());
+                !o.isEmpty());
         return this;
     }
 
     public StringSchema contains(String value) {
         if (Objects.nonNull(value)) {
-            this.predicateList.add(o -> Objects.nonNull(o) && o.toString().contains(value));
+            this.predicateList.add(o -> Objects.nonNull(o) && o.contains(value));
         }
         return this;
     }
@@ -27,8 +26,7 @@ public class StringSchema extends BaseSchema {
     public StringSchema minLength(int minLength) {
         this.predicateList.add(o ->
                 Objects.nonNull(o) &&
-                o instanceof String &&
-                o.toString().length() >= minLength
+                o.length() >= minLength
         );
         return this;
     }
