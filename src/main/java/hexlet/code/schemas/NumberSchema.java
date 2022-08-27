@@ -27,8 +27,8 @@ public final class NumberSchema extends BaseSchema {
 
     public NumberSchema range(Number min, Number max) {
         this.addPredicate(o ->
-                        ((Number) o).doubleValue() > min.doubleValue()
-                                && ((Number) o).doubleValue() < max.doubleValue()
+                        ((Number) o).doubleValue() >= min.doubleValue()
+                                && ((Number) o).doubleValue() <= max.doubleValue()
         );
         return this;
     }

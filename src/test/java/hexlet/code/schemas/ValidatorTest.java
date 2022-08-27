@@ -27,7 +27,7 @@ class ValidatorTest {
         assertFalse(v.number().positive().isValid(-6));
         assertFalse(v.number().required().positive().isValid(null));
         assertFalse(v.number().required().isValid("asd"));
-        assertTrue(v.number().range(-5, 5).isValid(1));
+        assertTrue(v.number().range(-5, 5).isValid(5));
         assertFalse(v.number().range(-5, 5).isValid(7));
     }
 
