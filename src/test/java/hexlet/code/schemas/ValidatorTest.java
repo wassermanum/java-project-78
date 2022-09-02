@@ -74,6 +74,7 @@ class ValidatorTest {
 
         MapSchema m = v.map().sizeof(2);
         assertTrue(m.isValid(human4));
+
     }
     //CHECKSTYLE.ON: MagicNumber
 }
